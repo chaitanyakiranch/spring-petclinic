@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    
+	agent any
 
     stages {
 	
@@ -14,7 +15,7 @@ pipeline {
 				}
 			}
 
-	// Clone git repo for spring boot app spring-petclinic			
+	// Clone git repo for spring boot app	
         
 			stage('Git Repo Checkout'){
 			
@@ -26,7 +27,7 @@ pipeline {
 	   
 			} 
 			
-	// Compile the code  for spring boot app spring-petclinic				
+	// Compile the code for spring boot app spring-petclinic				
 			
 			stage ('Compile the code ') {
 				steps {
@@ -44,9 +45,9 @@ pipeline {
 				}
 			}			
 
-	// Package the code 
+	// Package the application code 
 			
-			stage ('Package Stage') {
+			stage ('Package application') {
 				steps {
 				
 					sh "cd spring-petclinic && ./mvnw clean package"
