@@ -78,7 +78,7 @@ pipeline {
 	
 		stage('Docker Push to Jfrog artifactory') {
 		  steps {
-				withCredentials([usernamePassword(credentialsId: 'chaitanyakiranchitta', passwordVariable: 'jfrogartpwd', usernameVariable: 'jfrogartusername')]) {
+				withCredentials([usernamePassword(credentialsId: 'chaitanyachittajfrog', passwordVariable: 'jfrogartpwd', usernameVariable: 'jfrogartusername')]) {
 					sh "docker login chaitanyakiranchitta-petclinic.jfrog.io -u ${env.jfrogartusername} -p ${env.jfrogartpwd}"
 					sh "docker tag chaitanyakiranchitta/docker-spring-pet-clinic chaitanyakiranchitta-petclinic.jfrog.io/docker-spring-pet-clinic"
 					sh 'docker push chaitanyakiranchitta-petclinic.jfrog.io/docker-spring-pet-clinic'
