@@ -26,12 +26,16 @@ pipeline {
 	   
 			} 
 			
+	// Compile the code  for spring boot app spring-petclinic				
+			
 			stage ('Compile the code ') {
 				steps {
 				
 					sh "cd spring-petclinic && ./mvnw compile"
 				}
 			}
+			
+	// Run the Unit tests for the application.			
 
 			stage ('Run Unit tests ') {
 				steps {
@@ -40,7 +44,7 @@ pipeline {
 				}
 			}			
 
-	// Compile the code with Maven
+	// Package the code 
 			
 			stage ('Package Stage') {
 				steps {
@@ -49,12 +53,27 @@ pipeline {
 				}
 			}
 			
+	// Build the docker image 			
+			
 			
 			stage('Build Docker image for spring-pet-clinic') {
 			  steps {
-				sh 'cd spring-petclinic && docker build -t  docker-spring-pet-clinic .'
+				sh 'cd spring-petclinic && docker build -t  chaitanyakiranchitta/docker-spring-pet-clinic .'
 			  }
 			}			
      
-        }
+		
+	// Push the docker image to dockerhub		
+			
+			
+		stage('Docker Push') {
+		  steps {
+				withCredentials([usernamePassword(credentialsId: 'chaitanyakiranchitta', passwordVariable: 'dockerhubpwd', usernameVariable: 'dockerhubusername')]) {
+					sh "docker login -u ${env.dockerhubusername} -p ${env.dockerhubpwd}"
+					sh 'docker push chaitanyakiranchitta/docker-spring-pet-clinic:latest'
+				}
+			}
+		}	
+
+	}
  }
