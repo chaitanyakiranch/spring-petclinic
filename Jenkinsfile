@@ -38,7 +38,7 @@ pipeline {
 			
 			stage('Build Docker image for spring-pet-clinic') {
 			  steps {
-				sh 'docker build -f spring-petclinic/Dockerfile -t  docker-spring-pet-clinic .'
+				sh 'cd spring-petclinic && docker build -t  docker-spring-pet-clinic .'
 			  }
 			}			
      
