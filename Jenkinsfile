@@ -20,7 +20,7 @@ pipeline {
 			
 				steps{
 				 
-				 sh "git clone https://github.com/spring-projects/spring-petclinic"
+				 sh "git clone https://github.com/chaitanyakiranch/spring-petclinic.git"
 				
 				}
 	   
