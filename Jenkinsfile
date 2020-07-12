@@ -16,7 +16,7 @@ pipeline {
 
 	// Clone git repo for spring boot app spring-petclinic			
         
-			stage('SCM Checkout'){
+			stage('Git Repo Checkout'){
 			
 				steps{
 				 
@@ -58,7 +58,6 @@ pipeline {
 			stage('Build Docker image for spring-pet-clinic') {
 			  steps {
 				sh 'cd spring-petclinic && docker build -t  chaitanyakiranchitta/docker-spring-pet-clinic .'
-				sh 'cd spring-petclinic && docker build -t  chaitanyakiranchitta-petclinic.jfrog.io/docker-spring-pet-clinic .'
 			  }
 			}			
      
