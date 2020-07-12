@@ -25,13 +25,27 @@ pipeline {
 				}
 	   
 			} 
+			
+			stage ('Compile the code ') {
+				steps {
+				
+					sh "cd spring-petclinic && ./mvnw compile"
+				}
+			}
+
+			stage ('Run Unit tests ') {
+				steps {
+				
+					sh "cd spring-petclinic && ./mvnw test"
+				}
+			}			
 
 	// Compile the code with Maven
 			
-			stage ('Compile Stage') {
+			stage ('Package Stage') {
 				steps {
 				
-					sh "cd spring-petclinic && ./mvnw package"
+					sh "cd spring-petclinic && ./mvnw clean package"
 				}
 			}
 			
