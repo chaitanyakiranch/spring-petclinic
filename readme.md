@@ -1,7 +1,8 @@
 ## Prerequisites 
 
-Install Docker on the machine
-Jenkins set up on the machine to run the pipeline. Refer to "Appendix - Jenkins set up" for detailed instructions.
+1)	Install Docker on the machine.
+
+2)	Jenkins set up on the machine to run the pipeline. Refer to "Appendix - Jenkins set up" for detailed instructions.
 
 ## Run and access the Pet-clinic application
 
